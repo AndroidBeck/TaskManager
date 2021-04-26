@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "date_start": "1619478000",
+    "date_finish": "1619481599",
+    "name": "My task",
+    "description": "Описание моего дела"
+  },
+  {
+    "id": 2,
+    "date_start": "1619510400",
+    "date_finish": "1619524800",
+    "name": "My task 2",
+    "description": "Описание моего другого дела"
+  },
+  {
+    "id": 3,
+    "date_start": "1619524800",
+    "date_finish": "1619532000",
+    "name": "My task 3",
+    "description": "Finish first part of this app"
+  }
+]
