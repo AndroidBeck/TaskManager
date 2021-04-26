@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="guideline_start_position">16dp</dimen>
+    <dimen name="guideline_end_position">16dp</dimen>
+</resources>
