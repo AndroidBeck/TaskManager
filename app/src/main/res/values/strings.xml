@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Task Manager</string>
+    <string name="tools_time_text">12:00</string>
+    <string name="tools_task_name_text">Create a small app</string>
 </resources>
