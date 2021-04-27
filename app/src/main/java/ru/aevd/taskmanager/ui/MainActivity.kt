@@ -2,7 +2,7 @@ package ru.aevd.taskmanager.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,6 +11,7 @@ import ru.aevd.taskmanager.databinding.ActivityMainBinding
 import ru.aevd.taskmanager.domain.entities.Task
 import ru.aevd.taskmanager.domain.loadTasks
 import ru.aevd.taskmanager.ui.adapters.TasksListAdapter
+import java.sql.Timestamp
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +32,14 @@ class MainActivity : AppCompatActivity() {
         ) {
             view, year, month, day ->
             val month = month + 1
-            val msg = "You Selected: $day/$month/$year"
-            Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+            val startDayTimestamp: Long = Timestamp.valueOf("$year-$month-$day 00:00:00").time / 1000
+            val endDayTimestamp: Long = Timestamp.valueOf("$year-$month-$day 23:59:59").time / 1000
+            Log.d("MainActivity", "Timestamp: $day $month $year $startDayTimestamp $endDayTimestamp")
+            val filteredTasks = tasks.filter { task ->
+                task.dateStart < endDayTimestamp && task.dateFinish > startDayTimestamp
+            }
+            //Update adapter when pick a date
+            updateAdapter(filteredTasks)
         }
 
         //Set recycler
@@ -44,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         //Parse Json
         CoroutineScope(Dispatchers.IO).launch {
             tasks = loadTasks(applicationContext)
-            updateAdapter(tasks)
         }
 
     }
