@@ -33,9 +33,8 @@ class TaskViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val time: TextView = itemView.findViewById(R.id.tv_time)
     private val taskName: TextView = itemView.findViewById(R.id.tv_task_name)
 
-    //TODO: pass time parameter
     fun onBind(task: Task) {
-        time.text = "12:00"
+        time.text = "${task.dateStart} - ${task.dateFinish}"
         taskName.text = task.name
     }
 

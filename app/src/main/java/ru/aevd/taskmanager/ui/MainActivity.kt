@@ -3,6 +3,7 @@ package ru.aevd.taskmanager.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,8 @@ class MainActivity : AppCompatActivity() {
             }
             //Update adapter when pick a date
             updateAdapter(filteredTasks)
+            binding.tasksRecycler.isVisible = filteredTasks.isNotEmpty()
+            binding.noTasksTextView.isVisible = filteredTasks.isEmpty()
         }
 
         //Set recycler
