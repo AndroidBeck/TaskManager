@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         ) {
             view, year, month, day ->
             val month = month + 1
+            //Filter tasks according to the picked date
             val startDayTimestamp: Long = Timestamp.valueOf("$year-$month-$day 00:00:00").time / 1000
             val endDayTimestamp: Long = Timestamp.valueOf("$year-$month-$day 23:59:59").time / 1000
             Log.d("MainActivity", "Timestamp: $day $month $year $startDayTimestamp $endDayTimestamp")
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         binding.tasksRecycler.adapter = TasksListAdapter()
         binding.tasksRecycler.layoutManager = LinearLayoutManager(
             baseContext, LinearLayoutManager.VERTICAL, false)
+
 
         //Parse Json
         CoroutineScope(Dispatchers.IO).launch {
