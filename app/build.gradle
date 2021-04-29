@@ -47,8 +47,15 @@ dependencies {
 
     //Serialization
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"
+
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+
+    //ViewModels, LiveData
+    implementation "androidx.fragment:fragment-ktx:1.3.3"
+    def lifecycle_version = "2.3.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     //Tests
     testImplementation 'junit:junit:4.13.2'

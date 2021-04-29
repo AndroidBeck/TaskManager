@@ -25,7 +25,7 @@ private class JsonTask(
     val description: String
 )
 
-internal suspend fun loadTasks(context: Context): List<Task> = withContext(Dispatchers.IO) {
+internal suspend fun loadTasksFromJSon(context: Context): List<Task> = withContext(Dispatchers.IO) {
     val data = readAssetFileToString(context, "tasks.json")
     val jsonTasks = jsonFormat.decodeFromString<List<JsonTask>>(data)
     jsonTasks.map { jsonTask ->
