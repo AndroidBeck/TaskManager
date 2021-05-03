@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="guideline_start_position">16dp</dimen>
+    <dimen name="guideline_end_position">16dp</dimen>
+    <dimen name="task_item_padding">1dp</dimen>
+    <dimen name="task_name_start_margin">16dp</dimen>
+    <dimen name="task_recycler_margin_top">16dp</dimen>
+    <dimen name="task_recycler_margin_bottom">16dp</dimen>
+</resources>
