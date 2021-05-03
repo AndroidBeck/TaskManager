@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.aevd.taskmanager.R
 import ru.aevd.taskmanager.domain.entities.Task
+import ru.aevd.taskmanager.utils.convertTimestampToString
 
 class TasksListAdapter: RecyclerView.Adapter<TaskViewHolder>() {
     private var tasks: List<Task> = listOf()
@@ -34,7 +35,7 @@ class TaskViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
     private val taskName: TextView = itemView.findViewById(R.id.tv_task_name)
 
     fun onBind(task: Task) {
-        time.text = "${task.dateStart} - ${task.dateFinish}"
+        time.text = "${convertTimestampToString(task.dateStart)} - ${convertTimestampToString(task.dateFinish)}"
         taskName.text = task.name
     }
 
