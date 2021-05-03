@@ -2,5 +2,9 @@
     <string name="app_name">Task Manager</string>
     <string name="tools_time_text">12:00</string>
     <string name="tools_task_name_text">Create a small app</string>
-    <string name="no_tasks_text">There is no tasks for today</string>
+
+    <string name="no_tasks_text">There is no tasks at all</string>
+    <string name="no_tasks_by_day_text">There is no tasks for this day</string>
+    <string name="error_loading_data_text">An error occurred while loading tasks</string>
+    <string name="pick_a_date_text">Pick a date</string>
 </resources>

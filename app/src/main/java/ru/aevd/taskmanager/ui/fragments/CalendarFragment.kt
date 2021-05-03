@@ -10,6 +10,7 @@ import ru.aevd.taskmanager.databinding.CalendarFragmentBinding
 import ru.aevd.taskmanager.domain.entities.Task
 import ru.aevd.taskmanager.ui.adapters.TasksListAdapter
 import ru.aevd.taskmanager.ui.viewmodels.CalendarViewModel
+import ru.aevd.taskmanager.ui.viewmodels.State
 import java.util.*
 
 class CalendarFragment: Fragment(R.layout.calendar_fragment) {
@@ -22,6 +23,7 @@ class CalendarFragment: Fragment(R.layout.calendar_fragment) {
         setCalendar()
         setRecycler()
         viewModel.filteredTasks.observe(this.viewLifecycleOwner, this::updateTasksList)
+        viewModel.state.observe(this.viewLifecycleOwner, this::updateStatus)
     }
 
     private fun setCalendar() {
@@ -45,6 +47,23 @@ class CalendarFragment: Fragment(R.layout.calendar_fragment) {
     private fun updateTasksList(filteredTasks: List<Task>) {
         (binding.tasksRecycler.adapter as TasksListAdapter).bindTasks(filteredTasks)
         binding.tasksRecycler.isVisible = filteredTasks.isNotEmpty()
-        binding.noTasksTextView.isVisible = filteredTasks.isEmpty()
+        binding.tasksStatusTextView.isVisible = filteredTasks.isEmpty()
     }
+
+    private fun updateStatus(state: State) {
+        binding.tasksRecycler.isVisible = state is State.Success
+        when(state) {
+            is State.Success -> {
+                binding.tasksRecycler.isVisible = true
+                binding.tasksStatusTextView.isVisible = false
+            }
+            is State.Failed -> {
+                binding.tasksRecycler.isVisible = false
+                binding.tasksStatusTextView.isVisible = true
+                binding.tasksStatusTextView.text = state.msg
+            }
+            is State.Loading -> {}
+        }
+    }
+
 }
